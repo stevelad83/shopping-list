@@ -20,6 +20,7 @@ form.addEventListener('submit', async (e) => {
     const quantity = data.get('quantity');
 
     await createItem(item, quantity);
+    form.reset();
     fetchAndDisplayList();
 });
 /* Display Functions */
