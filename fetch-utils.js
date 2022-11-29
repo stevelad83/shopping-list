@@ -16,7 +16,7 @@ export async function getAllItems() {
         .select('*')
         .match({ user_id: client.auth.user().id });
 
-    return response.data;
+    return checkError(response);
 }
 
 export async function signUpUser(email, password) {
@@ -56,7 +56,7 @@ export async function buyItem(id) {
         .from('groceries')
         .update({ bought: true })
         .match({ user_id: client.auth.user().id, id: id });
-    return response;
+    return checkError(response);
 }
 
 export async function deleteAllItems() {
@@ -64,5 +64,10 @@ export async function deleteAllItems() {
         .from('groceries')
         .delete()
         .match({ user_id: client.auth.user().id });
-    return response;
+    return checkError(response);
+}
+
+function checkError({ data, error }) {
+    // eslint-disable-next-line no-console
+    return error ? console.error(error) : data;
 }
