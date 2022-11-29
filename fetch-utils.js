@@ -50,3 +50,19 @@ export async function createItem(item, quantity) {
         .from('groceries')
         .insert({ item: item, quantity: quantity, user_id: client.auth.user().id });
 }
+
+export async function buyItem(id) {
+    const response = await client
+        .from('groceries')
+        .update({ bought: true })
+        .match({ user_id: client.auth.user().id, id: id });
+    return response;
+}
+
+export async function deleteAllItems() {
+    const response = await client
+        .from('groceries')
+        .delete()
+        .match({ user_id: client.auth.user().id });
+    return response;
+}

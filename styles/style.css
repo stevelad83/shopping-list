@@ -1,0 +1,15 @@
+.need {
+    cursor: pointer;
+}
+
+.bought {
+    text-decoration: line-through;
+    background-color: aquamarine;
+}
+
+.item {
+    background-color: azure;
+    width: 80%;
+    font-size: 2rem;
+    margin: 10px;
+}

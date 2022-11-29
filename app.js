@@ -1,11 +1,12 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
-import { checkAuth, createItem, getAllItems } from './fetch-utils.js';
+import { buyItem, checkAuth, createItem, getAllItems, deleteAllItems } from './fetch-utils.js';
 import { renderItems } from './render-utils.js';
 
 /* Get DOM Elements */
 const form = document.querySelector('.item-form');
 const listEl = document.querySelector('.list');
+const deleteBtn = document.querySelector('.delete');
 
 /* State */
 
@@ -32,10 +33,19 @@ async function fetchAndDisplayList() {
         const listItemEl = renderItems(item);
 
         listEl.append(listItemEl);
+
+        listItemEl.addEventListener('click', async () => {
+            await buyItem(item.id);
+            fetchAndDisplayList();
+        });
     }
-    fetchAndDisplayList();
 }
 
 window.addEventListener('load', async () => {
+    fetchAndDisplayList();
+});
+
+deleteBtn.addEventListener('click', async () => {
+    await deleteAllItems();
     fetchAndDisplayList();
 });
