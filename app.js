@@ -1,12 +1,20 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
-import { buyItem, checkAuth, createItem, getAllItems, deleteAllItems } from './fetch-utils.js';
+import {
+    buyItem,
+    checkAuth,
+    createItem,
+    getAllItems,
+    deleteAllItems,
+    signOutUser,
+} from './fetch-utils.js';
 import { renderItems } from './render-utils.js';
 
 /* Get DOM Elements */
 const form = document.querySelector('.item-form');
 const listEl = document.querySelector('.list');
 const deleteBtn = document.querySelector('.delete');
+const signOutLink = document.getElementById('sign-out-link');
 
 /* State */
 
@@ -49,4 +57,8 @@ window.addEventListener('load', async () => {
 deleteBtn.addEventListener('click', async () => {
     await deleteAllItems();
     fetchAndDisplayList();
+});
+
+signOutLink.addEventListener('click', () => {
+    signOutUser();
 });
