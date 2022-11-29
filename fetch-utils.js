@@ -10,6 +10,15 @@ export function getUser() {
     return client.auth.user();
 }
 
+export async function getAllItems() {
+    const response = await client
+        .from('groceries')
+        .select('*')
+        .match({ user_id: client.auth.user().id });
+
+    return response.data;
+}
+
 export async function signUpUser(email, password) {
     return await client.auth.signUp({
         email,
@@ -40,5 +49,4 @@ export async function createItem(item, quantity) {
     const response = await client
         .from('groceries')
         .insert({ item: item, quantity: quantity, user_id: client.auth.user().id });
-    return response;
 }
