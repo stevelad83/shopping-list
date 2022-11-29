@@ -35,3 +35,10 @@ export async function checkAuth() {
 }
 
 /* Data functions */
+
+export async function createItem(item, quantity) {
+    const response = await client
+        .from('groceries')
+        .insert({ item: item, quantity: quantity, user_id: client.auth.user().id });
+    return response;
+}
