@@ -17,7 +17,7 @@ const deleteBtn = document.querySelector('.delete');
 const signOutLink = document.getElementById('sign-out-link');
 
 /* State */
-
+checkAuth();
 /* Events */
 
 form.addEventListener('submit', async (e) => {
