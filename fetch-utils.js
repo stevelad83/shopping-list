@@ -40,7 +40,7 @@ export async function signOutUser() {
 export async function checkAuth() {
     const user = getUser();
 
-    if (!user) location.replace('../');
+    if (!user) location.replace('./auth');
 }
 
 /* Data functions */
