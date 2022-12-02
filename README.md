@@ -1,3 +1,45 @@
+![](./assets/wireframe.png)
+
+## Plan
+
+List page HTML:
+
+    CREATE
+    form
+    inputs => quantity, item
+
+    ADD ITEM btn
+    ul
+    append li
+
+    DELETE BTN
+
+1. Database setup
+
+    make table in supabase
+    add foreign key (uuid)
+    enable rls
+
+2. Create form
+   create function
+   submit eventlistener
+   get form data
+
+3. List all items (ul)
+   fetch function
+   render function
+   display (app js)
+   display on load
+
+4. Update item (strikethrough)
+   update function
+   event handler on li
+   displayFunc()
+
+5. Delete button
+   delete func
+   eventlistener - delete func on click
+
 ## The Golden Rule:
 
 🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
